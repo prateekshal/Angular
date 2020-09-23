@@ -1,0 +1,24 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "description": "Directory for Coursera Angular course",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateekshal/Angular.git"
+  },
+  "author": "Prateeksha Lingashettar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prateekshal/Angular/issues"
+  },
+  "homepage": "https://github.com/prateekshal/Angular#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
