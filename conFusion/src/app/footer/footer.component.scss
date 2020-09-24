@@ -1,0 +1,18 @@
+@import '../../assets/color';
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+
+.footer{
+    background-color: $background-pale;
+    @include zero-margin(20px, 0px);
+}
+
+.btn-facebook {color:$white!important; background-color:$background-facebook!important;}
+.btn-google-plus{color:$white!important;background-color:$background-google-plus!important;}
+.btn-youtube{color:$white!important;background-color:$background-youtube!important;}
+.btn-linkedin{color:$white!important;background-color:$background-linkedin!important;}
+.btn-twitter{color:$white!important;background-color:$background-twitter!important;}
+.btn-mail{color:$white!important;background-color:$background-mail!important;}
