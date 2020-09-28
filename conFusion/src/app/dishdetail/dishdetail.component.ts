@@ -23,6 +23,8 @@ export class DishdetailComponent implements OnInit {
   rating: number;
 
   errMess: string;
+  dishCopy: Dish;
+  commentErrMess: string;
 
   @ViewChild('ctform') commentFormDirective;
   @ViewChild('slider') slider;
@@ -56,7 +58,7 @@ export class DishdetailComponent implements OnInit {
     .subscribe((ids) => this.dishIds = ids);
     this.route.params
     .pipe(switchMap((params: Params)=> this.dishService.getDish(params['id'])))
-    .subscribe(dish =>{this.dish = dish; this.setPrevNext(dish.id)},
+    .subscribe(dish =>{this.dish = dish; this.dishCopy=dish; this.setPrevNext(dish.id)},
     errmess => this.errMess = <any>errmess);
   }
 
@@ -114,8 +116,12 @@ export class DishdetailComponent implements OnInit {
     this.comment = this.commentForm.value;
     this.comment.rating = this.rating;
     this.comment.date = new Date().toISOString();
-    console.log(this.comment);
-    this.dishService.addDish(this.dishIds.indexOf(this.dish.id), this.comment);
+    //this.dishService.addDish(this.dishIds.indexOf(this.dish.id), this.comment);
+    this.dishCopy.comments.push(this.comment);
+    this.dishService.putComment(this.dishCopy)
+    .subscribe(dish => {
+      this.dish = dish; this.dishCopy = dish;},
+    errmess => this.commentErrMess = <any>errmess);
     this.commentForm.reset({
       rating: 5,
       comment: '',
