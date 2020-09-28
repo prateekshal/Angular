@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { Comment } from '../shared/comments';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
+import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private processHTTPMessageService: ProcessHTTPMsgService) { }
 
   getDishes(): Observable<Dish[]>{
     // return new Promise(resolve => {
@@ -22,7 +23,8 @@ export class DishService {
     // });
     //return of(DISHES).pipe(delay(2000)).toPromise;
     //return of(DISHES).pipe(delay(2000));
-    return this.http.get<Dish[]>(baseURL + 'dishes');
+    return this.http.get<Dish[]>(baseURL + 'dishes')
+    .pipe(catchError(this.processHTTPMessageService.handleError));
   }
 
   getDish(id: string): Observable<Dish> {
@@ -34,6 +36,7 @@ export class DishService {
     //   }, 2000)
     // });
     return this.http.get<Dish>(baseURL + 'dishes/' + id)
+    .pipe(catchError(this.processHTTPMessageService.handleError));
   }
 
   getFeaturedDish(): Observable<Dish> {
@@ -45,11 +48,13 @@ export class DishService {
     //   }, 2000);
     // });
     return this.http.get<Dish>(baseURL + 'dishes?featured=true')
-    .pipe(map(dishes => dishes[0]));
+    .pipe(map(dishes => dishes[0]))
+    .pipe(catchError(this.processHTTPMessageService.handleError));
   }
 
   getDishIds(): Observable<string[] | any>{
-    return this.getDishes().pipe(map(dishes => dishes.map((dish) => dish.id)));
+    return this.getDishes().pipe(map(dishes => dishes.map((dish) => dish.id)))
+    .pipe(catchError(error => error));
   }
 
   addDish(id: number, comment: Comment){

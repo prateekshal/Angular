@@ -22,6 +22,8 @@ export class DishdetailComponent implements OnInit {
   comment: Comment;
   rating: number;
 
+  errMess: string;
+
   @ViewChild('ctform') commentFormDirective;
   @ViewChild('slider') slider;
 
@@ -54,7 +56,8 @@ export class DishdetailComponent implements OnInit {
     .subscribe((ids) => this.dishIds = ids);
     this.route.params
     .pipe(switchMap((params: Params)=> this.dishService.getDish(params['id'])))
-    .subscribe(dish =>{this.dish = dish; this.setPrevNext(dish.id)});
+    .subscribe(dish =>{this.dish = dish; this.setPrevNext(dish.id)},
+    errmess => this.errMess = <any>errmess);
   }
 
   onValueChanged(data?){

@@ -10,6 +10,7 @@ import { Dish } from '../shared/dish';
 })
 export class MenuComponent implements OnInit {
   dishes: Dish[];
+  errMsg: string;
 
   constructor(private dishService: DishService, @Inject('BaseURL') private baseURL) {
     
@@ -19,8 +20,8 @@ export class MenuComponent implements OnInit {
     // this.dishService.getDishes()
     // .then((dishes) => this.dishes = dishes);
     this.dishService.getDishes()
-    .subscribe((dishes) => this.dishes = dishes);
-
+    .subscribe((dishes) => this.dishes = dishes, 
+    errmessage => this.errMsg = <any>errmessage);
   }
 
 }
