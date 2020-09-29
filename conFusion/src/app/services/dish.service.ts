@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Dish } from '../shared/dish';
-import { DISHES } from '../shared/dishes';
 import { Comment } from '../shared/comments';
-import { of, Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import { map, catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { baseURL } from '../shared/baseurl';
+import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  constructor() { }
+  constructor(private http: HttpClient, private processHTTPMessageService: ProcessHTTPMsgService) { }
 
   getDishes(): Observable<Dish[]>{
     // return new Promise(resolve => {
@@ -19,7 +22,9 @@ export class DishService {
     //   }, 2000);
     // });
     //return of(DISHES).pipe(delay(2000)).toPromise;
-    return of(DISHES).pipe(delay(2000));
+    //return of(DISHES).pipe(delay(2000));
+    return this.http.get<Dish[]>(baseURL + 'dishes')
+    .pipe(catchError(this.processHTTPMessageService.handleError));
   }
 
   getDish(id: string): Observable<Dish> {
@@ -30,7 +35,8 @@ export class DishService {
     //     resolve(dish);
     //   }, 2000)
     // });
-    return of(DISHES.filter((dish) => (dish.id === id))[0]).pipe(delay(2000));
+    return this.http.get<Dish>(baseURL + 'dishes/' + id)
+    .pipe(catchError(this.processHTTPMessageService.handleError));
   }
 
   getFeaturedDish(): Observable<Dish> {
@@ -41,14 +47,23 @@ export class DishService {
     //     resolve(dish);
     //   }, 2000);
     // });
-    return of(DISHES.filter((dish) => dish.featured)[0]).pipe(delay(2000));
+    return this.http.get<Dish>(baseURL + 'dishes?featured=true')
+    .pipe(map(dishes => dishes[0]))
+    .pipe(catchError(this.processHTTPMessageService.handleError));
   }
 
   getDishIds(): Observable<string[] | any>{
-    return of(DISHES.map((dish) => dish.id));
+    return this.getDishes().pipe(map(dishes => dishes.map((dish) => dish.id)))
+    .pipe(catchError(error => error));
   }
 
-  addDish(id: number, comment: Comment){
-    DISHES[id].comments.push(comment);
+  putComment(dish: Dish): Observable<Dish>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.put<Dish>(baseURL + 'dishes/'+dish.id, dish, httpOptions)
+    .pipe(catchError(this.processHTTPMessageService.handleError));
   }
 }
