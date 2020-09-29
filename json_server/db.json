@@ -224,5 +224,126 @@
       "description": "Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!"
     }
   ],
-  "feedback": []
+  "feedback": [
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "hvhggjh",
+      "id": 1
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "dsfsgdg",
+      "id": 2
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "hello",
+      "id": 3
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "hello",
+      "id": 4
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "feedback",
+      "id": 5
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "aasasasas",
+      "id": 6
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "feedback",
+      "id": 7
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": true,
+      "contacttype": "Tel",
+      "message": "feedback",
+      "id": 8
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": true,
+      "contacttype": "Email",
+      "message": "wzazz",
+      "id": 9
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "sdsdss",
+      "id": 10
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.coma",
+      "agree": false,
+      "contacttype": "None",
+      "message": "dsfsf",
+      "id": 11
+    },
+    {
+      "firstname": "Prateeksha",
+      "lastname": "Lingashettar",
+      "telnum": "00000",
+      "email": "hff@gjg.com",
+      "agree": false,
+      "contacttype": "None",
+      "message": "final",
+      "id": 12
+    }
+  ]
 }
